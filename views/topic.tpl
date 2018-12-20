@@ -18,6 +18,7 @@
             <th>最后更新</th>
             <th>浏览</th>
             <th>回复数</th>
+            <th>操作</th>
         </tr>
         <tbody>
         {{range .Topics}}
@@ -27,6 +28,7 @@
             <td>{{.Updated}}</td>
             <td>{{.Views}}</td>
             <td>{{.ReplyCount}}</td>
+            <td><a href="/topic/delete/{{.Id}}">删除</a></td>
         </tr>
         {{end}}
         </tbody>
