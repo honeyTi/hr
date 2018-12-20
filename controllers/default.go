@@ -10,6 +10,6 @@ type MainController struct {
 
 func (c *MainController) Get() {
 	c.Data["IsHome"] = true
-	c.Data["IsLogin"] = false
+	c.Data["IsLogin"] = CheckAccount(c.Ctx)
 	c.TplName = "index.tpl"
 }

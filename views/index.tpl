@@ -3,6 +3,8 @@
 <html>
 
 {{template "header"}}
+<title>首页-我的博客</title>
+</head>
 <body>
 {{template "navbar" .}}
 <div class="container" style="padding-top: 40px;">
