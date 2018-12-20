@@ -3,6 +3,7 @@ package models
 import (
 	"fmt"
 	"github.com/astaxie/beego/orm"
+	"strconv"
 )
 // 添加分类
 func AddCategory(name string) error {
@@ -28,4 +29,15 @@ func GetAllCategory() ([] *Category, error) {
 	qs := o.QueryTable("blog_category")
 	_, err := qs.All(&cates)
 	return cates, err
+}
+// 删除分类
+func DelCategory(id string) error {
+	cid, err := strconv.ParseInt(id, 10, 64)
+	if err != nil {
+		return err
+	}
+	o := orm.NewOrm()
+	cate := &Category{Id:cid}
+	_, err1 := o.Delete(cate)
+	return err1
 }

@@ -32,6 +32,12 @@ func (c *CategoryController) Get() {
 		if len(id) == 0 {
 			break
 		}
+		err := models.DelCategory(id)
+		if err != nil {
+			beego.Error(err)
+		}
+		c.Redirect("/category",301)
+		return
 	}
 	var err error
 	c.Data["Categories"], err = models.GetAllCategory()
