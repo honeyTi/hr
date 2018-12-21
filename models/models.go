@@ -29,10 +29,18 @@ type Topic struct {
 	ReplyLastUserId int64
 	ReplyCount      int64
 }
+type Comment struct {
+	Id int64
+	Tid int64
+	Name string
+	Content string `orm:"size(5000)"`
+	Created time.Time `orm:"index"`
+}
 
 func InitDB() {
 	orm.RegisterModelWithPrefix("blog_",
 		new(Topic),
 		new(Category),
+		new(Comment),
 	)
 }

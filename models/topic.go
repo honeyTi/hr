@@ -6,13 +6,14 @@ import (
 	"time"
 )
 
-func AddTopic(title, content string) error {
+func AddTopic(title, content, attachment string) error {
 	o := orm.NewOrm()
 	topic := &Topic{
 		Title:title,
 		Content:content,
 		Created:time.Now(),
 		Updated:time.Now(),
+		Attachment:attachment,
 	}
 	_,err := o.Insert(topic)
 	return err
@@ -76,4 +77,21 @@ func DeleteTopicMap(tid string) error {
 	topic := &Topic{Id:tidNum}
 	_, err1 := o.Delete(topic)
 	return err1
+}
+
+// 增加评论
+func AddReply(tid, nickname, content string) error {
+	tidNum, err := strconv.ParseInt(tid, 10, 64)
+	if err != nil {
+		return err
+	}
+	reply := &Comment{
+		Tid:tidNum,
+		Name:nickname,
+		Content:content,
+		Created:time.Now(),
+	}
+	o := orm.NewOrm()
+	_, err = o.Insert(reply)
+	return err
 }

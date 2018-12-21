@@ -28,7 +28,7 @@
             <td>{{.Updated}}</td>
             <td>{{.Views}}</td>
             <td>{{.ReplyCount}}</td>
-            <td><a href="/topic/delete/{{.Id}}">删除</a></td>
+            <td><a href="/topic/modify?tid={{.Id}}" style="margin-right: 20px">修改</a> <a href="/topic/delete/{{.Id}}">删除</a></td>
         </tr>
         {{end}}
         </tbody>
